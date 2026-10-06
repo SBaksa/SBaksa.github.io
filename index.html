@@ -9,7 +9,7 @@
 <title>Steven Baksa</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
 <style>
-/* Layout: one left-aligned column. Hero pairs the name with a live A* grid; projects run as rows with a narrow date rail. */
+/* Layout: one left-aligned column. Jobs and projects run as rows with a narrow date rail; two projects carry a live demo. */
 :root {
   --bg: #F3F5F8;
   --surface: #FFFFFF;
@@ -21,6 +21,12 @@
   --wall: #0E1B2E;
   --searched: #BFD3F0;
   --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  /* The Flightinator preview is a picture of another site, so it keeps its own light colors in both themes. */
+  --shot-bg: #FFFFFF;
+  --shot-ink: #2B2F36;
+  --shot-muted: #7B828C;
+  --shot-line: #CED4DA;
+  --shot-blue: #0069D9;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -80,17 +86,17 @@ a:hover { color: var(--accent); }
 .top nav a:hover { text-decoration-color: var(--accent); }
 
 /* Hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-block: clamp(2rem, 6vw, 4.5rem) clamp(3rem, 7vw, 5.5rem); }
+.hero { padding-block: clamp(2rem, 6vw, 4.5rem) clamp(3rem, 7vw, 5.5rem); }
 .hero-text { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
 h1 { font-stretch: 125%; font-weight: 800; font-size: clamp(2.75rem, 7.2vw, 5.25rem); line-height: 0.94; letter-spacing: -0.025em; }
-.lead { font-size: 1.25rem; line-height: 1.45; max-width: 30rem; }
-.sub { color: var(--muted); max-width: 30rem; }
+.lead { font-size: 1.25rem; line-height: 1.45; max-width: 36rem; }
+.sub { color: var(--muted); max-width: 36rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-top: 0.5rem; }
 .btn { display: inline-block; background: var(--ink); color: var(--bg); font-weight: 700; padding: 0.7rem 1.15rem; border-radius: 8px; text-decoration: none; }
 .btn:hover { background: var(--accent); color: var(--surface); }
 .actions .plain { font-weight: 600; }
 
-.finder { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.25rem); min-width: 0; }
+.finder { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.25rem); min-width: 0; max-width: 36rem; }
 #astar { display: block; width: 100%; aspect-ratio: 5 / 3; cursor: cell; touch-action: manipulation; border-radius: 6px; }
 .finder figcaption { display: flex; flex-direction: column; gap: 0.6rem; padding-top: 0.9rem; }
 #astar-status { font-weight: 700; font-variant-numeric: tabular-nums; min-height: 1.55em; }
@@ -143,18 +149,40 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
 .features dt { font-weight: 700; }
 .features dd { color: var(--muted); }
 
+/* Text beside a preview */
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: 1.5rem 2.5rem; align-items: start; }
+.split-text { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.split-text > p:not(.statement) { max-width: 38rem; }
+.features.three { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+
+.shot { min-width: 0; }
+.shot figcaption { font-size: 0.875rem; color: var(--muted); padding-top: 0.6rem; }
+.mock { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--shot-bg); color: var(--shot-ink); font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.75rem; line-height: 1.4; }
+.mock-bar { display: flex; gap: 0.3rem; padding: 0.5rem 0.65rem; background: var(--cell); border-bottom: 1px solid var(--line); }
+.mock-bar i { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--muted); opacity: 0.55; }
+.mock-page { display: flex; flex-direction: column; gap: 1.4rem; padding: 0.9rem 1.1rem 1.4rem; }
+.mock-nav { display: flex; align-items: baseline; gap: 0.9rem; color: var(--shot-blue); }
+.mock-nav b { font-size: 0.875rem; margin-right: auto; }
+.mock-hero { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; text-align: center; padding-top: 0.6rem; }
+.mock-hero strong { font-size: 1.5rem; font-weight: 600; line-height: 1.15; }
+.mock-hero span { color: var(--shot-muted); }
+.mock-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+.mock-field { border: 1px solid var(--shot-line); border-radius: 4px; padding: 0.4rem 0.55rem; color: var(--shot-muted); }
+.mock-btn { border-radius: 4px; padding: 0.4rem 0.55rem; background: var(--shot-blue); color: var(--shot-bg); font-weight: 600; text-align: center; }
+
 .meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; align-items: baseline; }
 .meta .stack { color: var(--muted); }
 .meta a { font-weight: 700; }
 
 /* Footer */
 .foot { border-top: 1px solid var(--line); padding-block: 2.5rem 3.5rem; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 2rem; }
-.foot p { font-stretch: 112%; font-weight: 800; font-size: 1.25rem; }
+.foot p { font-stretch: 112%; font-weight: 800; font-size: 1.25rem; overflow-wrap: anywhere; }
 .foot a { font-weight: 600; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
 
 @media (max-width: 54rem) {
-  .hero { grid-template-columns: minmax(0, 1fr); }
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .shot { max-width: 24rem; }
 }
 @media (max-width: 40rem) {
   .entry { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
@@ -162,7 +190,7 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
   .year, .entry.slim .year { font-size: 2.25rem; }
   .lang { margin-top: 0; margin-left: auto; }
   .role { margin-top: -0.6rem; }
-  .features, .cards { grid-template-columns: minmax(0, 1fr); }
+  .features, .features.three, .cards { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -190,26 +218,11 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
       <p class="sub">Python, Go, JavaScript and TypeScript. Rutgers mathematics graduate, 2021.</p>
       <p class="actions">
         <a class="btn" href="#experience">See experience</a>
+        <a class="plain" href="mailto:steven.baksa1@gmail.com">steven.baksa1@gmail.com</a>
         <a class="plain" href="https://github.com/SBaksa">GitHub</a>
         <a class="plain" href="https://www.linkedin.com/in/steven-b-54b09a176/">LinkedIn</a>
       </p>
     </div>
-
-    <figure class="finder">
-      <canvas id="astar" role="img" aria-label="A grid where the A* algorithm searches for the shortest route between two points, around randomly placed walls."></canvas>
-      <figcaption>
-        <p id="astar-status" aria-live="polite">Searching for a route</p>
-        <div class="finder-row">
-          <ul class="legend">
-            <li><span class="swatch wall"></span>Wall</li>
-            <li><span class="swatch searched"></span>Searched</li>
-            <li><span class="swatch route"></span>Route</li>
-          </ul>
-          <button id="astar-new" type="button">New map</button>
-        </div>
-        <p class="hint">This is A* search, the algorithm behind <a href="#visualized-a-star">Visualized A*</a>. Click the grid to add or remove walls.</p>
-      </figcaption>
-    </figure>
   </section>
 
   <section id="experience" class="section wrap">
@@ -389,15 +402,35 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
         <span class="lang">JavaScript</span>
       </div>
       <div class="body">
-        <h3>Flightinator</h3>
-        <p class="statement">A flight booking site with a React front end and an Express API.</p>
-        <p>Search for flights and book them. Built with a team over 101 commits and 12 pull requests.</p>
-        <ol class="flow" aria-label="How the app is put together">
-          <li><span>React app</span></li>
-          <li><span>Express API</span></li>
-          <li><span>Flight data</span></li>
-        </ol>
-        <dl class="features">
+        <div class="split">
+          <div class="split-text">
+            <h3>Flightinator</h3>
+            <p class="statement">A flight booking site with a React front end and an Express API.</p>
+            <p>Search for flights and book them. Built with a team over 101 commits and 12 pull requests.</p>
+            <ol class="flow" aria-label="How the app is put together">
+              <li><span>React app</span></li>
+              <li><span>Express API</span></li>
+              <li><span>Flight data</span></li>
+            </ol>
+          </div>
+          <figure class="shot">
+            <div class="mock" role="img" aria-label="The Flightinator front page: a navigation bar with Signup and Login, the heading Flightinator 9000, and a flight search with origin, destination and trip type.">
+              <div class="mock-bar"><i></i><i></i><i></i></div>
+              <div class="mock-page">
+                <div class="mock-nav"><b>Flightinator</b><span>Signup</span><span>Login</span></div>
+                <div class="mock-hero"><strong>Flightinator 9000</strong><span>Welcome! Book a flight here</span></div>
+                <div class="mock-form">
+                  <span class="mock-field">Origin</span>
+                  <span class="mock-field">Destination</span>
+                  <span class="mock-field">Trip type</span>
+                  <span class="mock-btn">Search flights</span>
+                </div>
+              </div>
+            </div>
+            <figcaption>The front page, redrawn in HTML and CSS.</figcaption>
+          </figure>
+        </div>
+        <dl class="features three">
           <div><dt>Front end</dt><dd>A React app for searching and booking flights.</dd></div>
           <div><dt>Back end</dt><dd>A Node.js server running Express that the front end calls.</dd></div>
           <div><dt>Data model</dt><dd>Planned from an entity relationship diagram that lives in the repo.</dd></div>
@@ -416,48 +449,29 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
         <h3>Visualized A*</h3>
         <p class="statement">A* pathfinding you can watch as it runs.</p>
         <p>The app generates a map in the browser, then shows the algorithm working across it. You can go back to earlier maps and change the algorithm's variables before each run.</p>
-        <p class="note">The grid at the top of this page is a small version of the same idea.</p>
+        <figure class="finder">
+          <canvas id="astar" role="img" aria-label="A grid where the A* algorithm searches for the shortest route between two points, around randomly placed walls."></canvas>
+          <figcaption>
+            <p id="astar-status" aria-live="polite">Searching for a route</p>
+            <div class="finder-row">
+              <ul class="legend">
+                <li><span class="swatch wall"></span>Wall</li>
+                <li><span class="swatch searched"></span>Searched</li>
+                <li><span class="swatch route"></span>Route</li>
+              </ul>
+              <button id="astar-new" type="button">New map</button>
+            </div>
+            <p class="hint">A small version of the same idea, running live. Click the grid to add or remove walls.</p>
+          </figcaption>
+        </figure>
         <p class="meta"><span class="stack">Built with JavaScript and HTML</span><a href="https://github.com/SBaksa/Visualized-A-Star">View the code</a></p>
-      </div>
-    </article>
-
-    <article class="entry" id="mindful">
-      <div class="rail">
-        <span class="year">2019</span>
-        <span class="rail-note">last updated</span>
-        <span class="lang">Swift</span>
-      </div>
-      <div class="body">
-        <h3>Mindful</h3>
-        <p class="statement">An iOS app that turns stress relief into a game.</p>
-        <p>Finish a stress-reducing task, earn experience points and level up your avatar. Progress is saved for each user. Built with a team.</p>
-        <ol class="flow" aria-label="How progress works">
-          <li><span>Finish a task</span></li>
-          <li><span>Earn XP</span></li>
-          <li><span>Level up the avatar</span></li>
-        </ol>
-        <p class="meta"><span class="stack">Built with Swift and SwiftUI</span><a href="https://github.com/zain08816/mindful">View the code</a></p>
-      </div>
-    </article>
-
-    <article class="entry" id="youtube-party">
-      <div class="rail">
-        <span class="year">2019</span>
-        <span class="rail-note">last updated</span>
-        <span class="lang">Python</span>
-      </div>
-      <div class="body">
-        <h3>YouTube Party</h3>
-        <p class="statement">Watch a YouTube video with friends, in sync.</p>
-        <p>A web app for watching the same video together from different places. The whole thing runs in Docker, with a Python back end and a SQL database. Built with a team.</p>
-        <p class="meta"><span class="stack">Built with Python, Docker Compose and SQL</span><a href="https://github.com/cosinic/youtube-party">View the code</a></p>
       </div>
     </article>
   </section>
 </main>
 
 <footer class="foot wrap">
-  <p>More code lives on GitHub.</p>
+  <p><a href="mailto:steven.baksa1@gmail.com">steven.baksa1@gmail.com</a></p>
   <span class="foot-links"><a href="https://github.com/SBaksa">GitHub</a><a href="https://www.linkedin.com/in/steven-b-54b09a176/">LinkedIn</a></span>
 </footer>
 
@@ -606,7 +620,7 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
     })();
   }
 
-  function newMap() {
+  function newMap(animate) {
     var m = measure();
     if (!m.w) return;
     cols = m.cols;
@@ -623,7 +637,8 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
       if (++tries % 20 === 0) density *= 0.8;
     } while (!found);
     fit();
-    play();
+    if (animate) play();
+    else { shownSearch = order.length; shownPath = path.length; draw(); report(); }
   }
 
   function refresh() {
@@ -665,15 +680,24 @@ h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; }
   canvas.addEventListener('pointerup', stopPainting);
   canvas.addEventListener('pointercancel', stopPainting);
 
-  newBtn.addEventListener('click', newMap);
+  newBtn.addEventListener('click', function () { newMap(true); });
 
-  newMap();
+  newMap(false);
+
+  if (!reduceMotion && window.IntersectionObserver) {
+    var seen = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      seen.disconnect();
+      play();
+    }, { threshold: 0.6 });
+    seen.observe(canvas);
+  }
 
   if (window.ResizeObserver) {
     new ResizeObserver(function () {
       var m = measure();
       if (!m.w) return;
-      if (m.cols !== cols) newMap();
+      if (m.cols !== cols) newMap(false);
       else if (Math.abs(m.w / cols - size) > 0.01) { fit(); draw(); }
     }).observe(canvas.parentNode);
   }
