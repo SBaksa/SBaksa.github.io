@@ -124,7 +124,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 .group .cards { max-width: none; padding-top: 0.25rem; }
 .group .flow li::after { background: var(--surface); }
 
-.stacks { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1rem 1.5rem; max-width: 52rem; border-top: 1px solid var(--rule); padding-top: 1.1rem; font-size: 1rem; }
+.stacks { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: 1rem 1.5rem; max-width: 52rem; border-top: 1px solid var(--rule); padding-top: 1.1rem; font-size: 1rem; }
 .stacks dt { font-weight: 700; }
 .stacks dd { color: var(--muted); }
 
@@ -299,8 +299,9 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 
         <dl class="stacks">
           <div><dt>Languages</dt><dd>Python, JavaScript</dd></div>
-          <div><dt>Frameworks</dt><dd>FastAPI, React</dd></div>
-          <div><dt>Data</dt><dd>BigQuery, MongoDB, Pandas, NumPy</dd></div>
+          <div><dt>Frameworks</dt><dd>FastAPI</dd></div>
+          <div><dt>Libraries</dt><dd>React, Pandas, NumPy</dd></div>
+          <div><dt>Data</dt><dd>BigQuery, MongoDB</dd></div>
           <div><dt>Operations</dt><dd>Datadog, Jenkins, GKE</dd></div>
           <div><dt>AI</dt><dd>LangChain, OpenAI</dd></div>
         </dl>
@@ -315,7 +316,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
       </div>
       <div class="body">
         <h3>Career break</h3>
-        <p>Six months of international travel. Competed in amateur muay thai and Brazilian jiu-jitsu.</p>
+        <p>Six months of international travel.</p>
       </div>
     </article>
 
@@ -343,6 +344,12 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
           <div class="card">
             <h4>Mileage telemetry</h4>
             <p>Extended a Spring Boot service with embedded ActiveMQ to take in mileage data from more train models. Reworked the SQL behind federal compliance reports so they ran faster and came out more accurate.</p>
+            <ol class="flow" aria-label="How the mileage data moves">
+              <li><span>Mileage</span></li>
+              <li><span>Spring Boot</span></li>
+              <li><span>MS Access</span></li>
+              <li><span>FRA reports</span></li>
+            </ol>
           </div>
         </div>
 
@@ -425,7 +432,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
             <p>Custom commands, word tracking, LaTeX rendering and a help menu that changes with your role.</p>
           </div>
         </div>
-        <p class="meta"><span class="stack">Built with Go, Docker, AWS EC2 and SQLite</span><a href="https://github.com/SBaksa/Rutgers-KunV4">View the code</a></p>
+        <p class="meta"><span class="stack">Built with Go, Docker, AWS EC2 and SQLite, with AI-assisted development in Claude Code</span><a href="https://github.com/SBaksa/Rutgers-KunV4">View the code</a></p>
       </div>
     </article>
 
