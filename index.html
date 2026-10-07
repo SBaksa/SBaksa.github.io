@@ -114,6 +114,7 @@ h3 { font-weight: 800; font-size: 1.875rem; line-height: 1.1; letter-spacing: -0
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 2.5rem; max-width: 46rem; padding-top: 0.5rem; }
 .cards.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
 .card { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+.card-stack { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
 h4, h5 { font-size: 1.125rem; font-weight: 700; }
 .stat { font-family: var(--display); font-weight: 700; font-size: 2.375rem; line-height: 1; letter-spacing: 0.005em; }
 .card p:not(.stat) { color: var(--muted); font-size: 1.0625rem; }
@@ -292,17 +293,25 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
               <li><span>Pandas tools</span></li>
             </ol>
           </div>
-          <div class="card">
-            <h4>Monitoring</h4>
-            <p>Set up Datadog dashboards with anomaly alerts for fraud, bots and outages across the ad delivery funnel, so partner issues were caught and fixed sooner.</p>
+          <div class="card-stack">
+            <div class="card">
+              <h4>Monitoring</h4>
+              <p>Set up Datadog dashboards with anomaly alerts for fraud, bots and outages across the ad delivery funnel, so partner issues were caught and fixed sooner.</p>
+            </div>
+            <div class="card">
+              <h4>CI/CD migration</h4>
+              <p>Moved the team's Jenkins setup from AWS EKS to GKE, which made deployments simpler and more reliable.</p>
+              <ol class="flow" aria-label="Where Jenkins moved">
+                <li><span>AWS EKS</span></li>
+                <li><span>GKE</span></li>
+              </ol>
+            </div>
           </div>
           <div class="card">
             <h4>Support chatbot</h4>
             <p>Designed a RAG chatbot with LangChain and OpenAI that answers basic SDK integration and API questions from customers.</p>
           </div>
         </div>
-
-        <p>Also moved the team's Jenkins setup from AWS EKS to GKE, which made deployments simpler and more reliable.</p>
 
         <dl class="stacks">
           <div><dt>Languages</dt><dd>Python, JavaScript</dd></div>
