@@ -115,10 +115,11 @@ h3 { font-weight: 800; font-size: 1.875rem; line-height: 1.1; letter-spacing: -0
 .cards.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
 .card { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
 .card-stack { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
+.card-stack .card:last-child { flex: 1; }
 h4, h5 { font-size: 1.125rem; font-weight: 700; }
 .stat { font-family: var(--display); font-weight: 700; font-size: 2.375rem; line-height: 1; letter-spacing: 0.005em; }
 .card p:not(.stat) { color: var(--muted); font-size: 1.0625rem; }
-.card .flow { padding-top: 0.6rem; }
+.card .flow { margin-top: auto; padding-top: 0.6rem; }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.875em; background: var(--cell); color: var(--ink); padding: 0.1em 0.4em; border-radius: 4px; white-space: nowrap; }
 
 /* One set-off panel per entry at most, for the part that deserves a closer look. */
@@ -133,11 +134,11 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 .stacks dd { color: var(--muted); }
 
 /* A flow is drawn as a small line with stops. */
-.flow { display: flex; max-width: 30rem; font-size: 0.9375rem; font-weight: 600; line-height: 1.25; }
-.flow li { flex: 1 1 0; min-width: 0; position: relative; padding: 1.15rem 0.75rem 0 0; }
+.flow { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); max-width: 30rem; font-size: 0.9375rem; font-weight: 600; line-height: 1.25; }
+.flow li { min-width: 0; position: relative; padding: 1.15rem 0.6rem 0 0; }
 .flow li::before { content: ""; position: absolute; left: 0.35rem; right: 0; top: 0.28rem; height: 3px; background: var(--route); }
 .flow li::after { content: ""; position: absolute; left: 0; top: 0; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--bg); border: 3px solid var(--route); }
-.flow li:last-child { flex: 0 1 auto; padding-right: 0; }
+.flow li:last-child { padding-right: 0; }
 .flow li:last-child::before { display: none; }
 
 .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2.5rem; max-width: 44rem; }
@@ -197,6 +198,9 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 .foot p a { text-decoration-thickness: 4px; text-underline-offset: 0.12em; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-weight: 600; padding-bottom: 0.5rem; }
 
+@media (min-width: 40.0625rem) {
+  .card .flow { min-height: 4.15rem; align-content: start; }
+}
 @media (max-width: 62rem) {
   .cards.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -213,6 +217,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
   .lead { font-size: 1.25rem; }
   .role { margin-top: -0.6rem; }
   .features, .features.three, .cards, .cards.cols-3 { grid-template-columns: minmax(0, 1fr); }
+  .flow { font-size: 0.8125rem; }
+  .flow li { padding-right: 0.4rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -344,13 +350,10 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
       <div class="body">
         <h3>NJ Transit</h3>
         <p class="role">Software Engineer Intern <span>New Jersey</span></p>
-        <p class="statement">Sensor data and mileage reporting for a $565M train fleet.</p>
-
         <div class="cards">
           <div class="card">
             <h4>Temperature pipeline</h4>
-            <p class="stat">Loaded twice a day</p>
-            <p>Built an Airflow pipeline in Python that scraped live train temperature readings with BeautifulSoup and Selenium and loaded them into PostgreSQL. Email alerts went out when a sensor crossed its threshold.</p>
+            <p>Built an Airflow pipeline in Python that scraped live train temperature readings with BeautifulSoup and Selenium and loaded them into PostgreSQL twice a day, for analytics and compliance on a $565M train fleet. Email alerts went out when a sensor crossed its threshold.</p>
             <ol class="flow" aria-label="How the sensor data moves">
               <li><span>Train sensors</span></li>
               <li><span>Airflow</span></li>
