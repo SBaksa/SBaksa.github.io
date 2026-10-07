@@ -35,8 +35,8 @@
   --shot-code: #F1F3F5;
   --display: "Sofia Sans Extra Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --text: "Sofia Sans", "Helvetica Neue", Arial, sans-serif;
-  --line-x: 0.5rem;
-  --indent: 3.5rem;
+  --line-x: 2rem;
+  --indent: 5.5rem;
   --stop-gap: 2.75rem;
   color-scheme: dark;
 }
@@ -93,14 +93,15 @@ h2 { display: block; width: fit-content; position: relative; z-index: 1; font-fa
 .entry { position: relative; padding: var(--stop-gap) 0 var(--stop-gap) var(--indent); scroll-margin-top: 1rem; }
 .entry::after { content: ""; position: absolute; left: var(--line-x); top: 0; bottom: 0; width: 4px; background: var(--route); }
 .entry:last-of-type::after { bottom: auto; height: calc(var(--stop-gap) + 1rem); }
-.entry::before { content: ""; position: absolute; z-index: 1; left: calc(var(--line-x) + 2px - 0.65rem); top: calc(var(--stop-gap) + 0.3rem); width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--bg); border: 4px solid var(--route); }
-.entry.slim::before { left: calc(var(--line-x) + 2px - 0.4rem); top: calc(var(--stop-gap) + 0.55rem); width: 0.8rem; height: 0.8rem; background: var(--route); border: 0; }
 .entry:last-of-type { padding-bottom: 0; }
 
-.rail { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.5rem; padding-bottom: 0.75rem; }
-.year { font-family: var(--display); font-weight: 700; font-size: 2rem; line-height: 1; letter-spacing: 0.01em; color: var(--route); }
-.rail-note { font-family: var(--display); font-weight: 600; font-size: 1.5rem; line-height: 1; color: var(--muted); }
-.lang { margin-left: 0.5rem; font-size: 0.8125rem; font-weight: 700; line-height: 1.2; border: 1.5px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.65rem; align-self: center; }
+/* The date is the stop marker: a capsule sitting on the line. */
+.rail { position: absolute; z-index: 1; left: calc(var(--line-x) + 2px); top: var(--stop-gap); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.1rem; background: var(--bg); border: 3px solid var(--route); border-radius: 0.6rem; padding: 0.35rem 0.4rem 0.3rem; }
+.year { font-family: var(--display); font-weight: 700; font-size: 1.5rem; line-height: 1; letter-spacing: 0.01em; color: var(--route); white-space: nowrap; }
+.rail-note { font-size: 0.75rem; font-weight: 600; line-height: 1; color: var(--muted); white-space: nowrap; }
+.entry.slim .rail { border-width: 2px; }
+.entry.slim .year { font-size: 1.25rem; }
+.lang { display: inline-block; margin-left: 0.5rem; vertical-align: 0.3em; font-size: 0.8125rem; font-weight: 700; line-height: 1.2; letter-spacing: 0; white-space: nowrap; border: 1.5px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.65rem; }
 
 .body { display: flex; flex-direction: column; gap: 1.15rem; min-width: 0; }
 h3 { font-weight: 800; font-size: 1.875rem; line-height: 1.1; letter-spacing: -0.01em; }
@@ -203,7 +204,10 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
   .shot { max-width: 24rem; }
 }
 @media (max-width: 40rem) {
-  :root { --line-x: 0.2rem; --indent: 2.25rem; --stop-gap: 2.25rem; }
+  :root { --line-x: 1.6rem; --indent: 4rem; --stop-gap: 2.25rem; }
+  .year { font-size: 1.25rem; }
+  .entry.slim .year { font-size: 1.125rem; }
+  .rail { padding: 0.3rem 0.3rem 0.25rem; }
   body { font-size: 1.0625rem; }
   .lead { font-size: 1.25rem; }
   .role { margin-top: -0.6rem; }
@@ -325,7 +329,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 
     <article class="entry" id="nj-transit">
       <div class="rail">
-        <span class="year">Summer 2019</span>
+        <span class="rail-note">Summer</span>
+        <span class="year">2019</span>
       </div>
       <div class="body">
         <h3>NJ Transit</h3>
@@ -368,11 +373,10 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
     <article class="entry slim" id="education">
       <div class="rail">
         <span class="year">2021</span>
-        <span class="rail-note">graduated</span>
       </div>
       <div class="body">
         <h3>Rutgers University</h3>
-        <p>Bachelor's in Mathematics, minor in Computer Science.</p>
+        <p>Graduated with a Bachelor's in Mathematics and a minor in Computer Science.</p>
       </div>
     </article>
   </section>
@@ -383,12 +387,10 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
     <article class="entry" id="rutgers-kun">
       <div class="rail">
         <span class="year">2026</span>
-        <span class="rail-note">volunteer</span>
-        <span class="lang">Go</span>
       </div>
       <div class="body">
-        <h3>Rutgers-Kun V4</h3>
-        <p class="role">Go developer <span>RU Mathcord</span></p>
+        <h3>Rutgers-Kun V4 <span class="lang">Go</span></h3>
+        <p class="role">Volunteer Go developer <span>RU Mathcord</span></p>
         <p class="statement">A Discord bot for 4,400 Rutgers students, rewritten from Node.js to Go.</p>
         <p>An open-source bot that runs across several university servers. It is deployed on AWS EC2 in Docker. Each Discord event runs in its own goroutine, and every server keeps its own settings in SQLite.</p>
         <ol class="flow" aria-label="How the bot handles a message">
@@ -442,12 +444,11 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
     <article class="entry" id="nlpscraper">
       <div class="rail">
         <span class="year">2022</span>
-        <span class="lang">Python</span>
       </div>
       <div class="body">
         <div class="split">
           <div class="split-text">
-            <h3>nlpScraper</h3>
+            <h3>nlpScraper <span class="lang">Python</span></h3>
             <p class="statement">Upload a resume PDF and get it back as structured JSON.</p>
             <p>Built on the open-source <a href="https://github.com/hxu296/resume-parser-service">resume-parser-service</a>, which reads the PDF and asks GPT-3 to sort it into fields. This version adds a React front end for uploading files and extends the parser to pull out research and seminars.</p>
             <ol class="flow" aria-label="How a resume is parsed">
@@ -484,12 +485,11 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
     <article class="entry" id="flightinator">
       <div class="rail">
         <span class="year">2021</span>
-        <span class="lang">JavaScript</span>
       </div>
       <div class="body">
         <div class="split">
           <div class="split-text">
-            <h3>Flightinator</h3>
+            <h3>Flightinator <span class="lang">JavaScript</span></h3>
             <p class="statement">A flight booking site with a React front end and an Express API.</p>
             <p>Search for flights and book them. Built with a team over 101 commits and 12 pull requests.</p>
             <ol class="flow" aria-label="How the app is put together">
@@ -527,10 +527,9 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
     <article class="entry" id="visualized-a-star">
       <div class="rail">
         <span class="year">2020</span>
-        <span class="lang">JavaScript</span>
       </div>
       <div class="body">
-        <h3>Visualized A*</h3>
+        <h3>Visualized A* <span class="lang">JavaScript</span></h3>
         <p class="statement">A* pathfinding you can watch as it runs.</p>
         <p>The app generates a map in the browser, then shows the algorithm working across it. You can go back to earlier maps and change the algorithm's variables before each run.</p>
         <figure class="finder">
