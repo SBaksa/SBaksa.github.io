@@ -31,6 +31,8 @@
   --shot-muted: #7B828C;
   --shot-line: #CED4DA;
   --shot-blue: #0069D9;
+  --shot-green: #198754;
+  --shot-code: #F1F3F5;
   --display: "Sofia Sans Extra Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --text: "Sofia Sans", "Helvetica Neue", Arial, sans-serif;
   --line-x: 0.5rem;
@@ -150,6 +152,12 @@ h4 { font-size: 1.125rem; font-weight: 700; }
 .mock-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
 .mock-field { border: 1px solid var(--shot-line); border-radius: 4px; padding: 0.4rem 0.55rem; color: var(--shot-muted); }
 .mock-btn { border-radius: 4px; padding: 0.4rem 0.55rem; background: var(--shot-blue); color: var(--shot-bg); font-weight: 600; text-align: center; }
+.mock-page.tight { gap: 0.65rem; }
+.mock-nav.plain { color: var(--shot-ink); }
+.mock-upload { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem; }
+.mock-btn.green { background: var(--shot-green); padding-inline: 0.9rem; }
+.mock-progress { border-radius: 999px; background: var(--shot-blue); color: var(--shot-bg); font-size: 0.625rem; font-weight: 600; line-height: 0.85rem; text-align: center; }
+.mock-code { margin: 0; background: var(--shot-code); border-radius: 4px; padding: 0.6rem 0.7rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.6875rem; line-height: 1.45; color: var(--shot-ink); white-space: pre-wrap; overflow-wrap: anywhere; }
 
 /* Live A* grid */
 .finder { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.25rem); min-width: 0; max-width: 36rem; }
@@ -390,6 +398,48 @@ h4 { font-size: 1.125rem; font-weight: 700; }
           </div>
         </div>
         <p class="meta"><span class="stack">Built with Go, Docker, AWS EC2 and SQLite</span><a href="https://github.com/SBaksa/Rutgers-KunV4">View the code</a></p>
+      </div>
+    </article>
+
+    <article class="entry" id="nlpscraper">
+      <div class="rail">
+        <span class="year">2022</span>
+        <span class="lang">Python</span>
+      </div>
+      <div class="body">
+        <div class="split">
+          <div class="split-text">
+            <h3>nlpScraper</h3>
+            <p class="statement">Upload a resume PDF and get it back as structured JSON.</p>
+            <p>Built on the open-source <a href="https://github.com/hxu296/resume-parser-service">resume-parser-service</a>, which reads the PDF and asks GPT-3 to sort it into fields. This version adds a React front end for uploading files and extends the parser to pull out research and seminars.</p>
+            <ol class="flow" aria-label="How a resume is parsed">
+              <li><span>Resume PDF</span></li>
+              <li><span>Flask API</span></li>
+              <li><span>GPT-3</span></li>
+              <li><span>JSON</span></li>
+            </ol>
+          </div>
+          <figure class="shot">
+            <div class="mock" role="img" aria-label="A mockup of the upload page: a resume PDF chosen for upload, a finished progress bar, and the parsed result shown as JSON with name, university and work experience fields.">
+              <div class="mock-bar"><i></i><i></i><i></i></div>
+              <div class="mock-page tight">
+                <div class="mock-nav plain"><b>Resume Parser</b></div>
+                <div class="mock-upload"><span class="mock-field">resume.pdf</span><span class="mock-btn green">Upload</span></div>
+                <div class="mock-progress">100%</div>
+                <pre class="mock-code">{
+  "full_name": "Sample Applicant",
+  "university": "State University",
+  "education_level": "BS",
+  "work_experience": [
+    { "job_title": "Software Engineer" }
+  ]
+}</pre>
+              </div>
+            </div>
+            <figcaption>A mockup of the upload page. The output shown is sample data.</figcaption>
+          </figure>
+        </div>
+        <p class="meta"><span class="stack">Built with Python, Flask, React and the OpenAI API</span><a href="https://github.com/SBaksa/nlpScraper">View the code</a></p>
       </div>
     </article>
 
