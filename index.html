@@ -110,6 +110,8 @@ h2 { display: block; width: fit-content; position: relative; z-index: 1; font-fa
 h3 { font-weight: 800; font-size: 1.875rem; line-height: 1.1; letter-spacing: -0.01em; }
 .role { font-weight: 700; margin-top: -0.75rem; }
 .role span { font-weight: 400; color: var(--muted); }
+.place { font-size: 1rem; color: var(--muted); margin-top: -1rem; }
+.aside { display: inline-block; margin-left: 0.6rem; font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--muted); }
 .statement { font-size: 1.5rem; font-weight: 500; line-height: 1.25; max-width: 34rem; text-wrap: balance; }
 .body > p { max-width: 38rem; }
 .note { color: var(--muted); }
@@ -219,6 +221,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
   body { font-size: 1.0625rem; }
   .lead { font-size: 1.25rem; }
   .role { margin-top: -0.6rem; }
+  .place { margin-top: -0.9rem; }
+  .aside { margin-left: 0; display: block; padding-top: 0.2rem; }
   .features, .features.three, .cards, .cards.cols-3 { grid-template-columns: minmax(0, 1fr); }
   .flow { font-size: 0.8125rem; }
   .flow li { padding-right: 0.4rem; }
@@ -279,8 +283,9 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
         <span class="year">2024</span>
       </div>
       <div class="body">
-        <h3>Chartboost</h3>
-        <p class="role">Software Engineer <span>San Francisco, California. Acquired by Zynga and Take-Two.</span></p>
+        <h3>Chartboost <span class="aside">Acquired by Zynga and Take-Two</span></h3>
+        <p class="role">Software Engineer (Ad Solutions team)</p>
+        <p class="place">San Francisco, California</p>
         <p>Built product utilizing APIs, data pipelines, and dashboards. Worked closely with engineering teams, external clients, account managers, and operations teams.</p>
 
         <div class="cards cols-3">
@@ -352,7 +357,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
       </div>
       <div class="body">
         <h3>NJ Transit</h3>
-        <p class="role">Software Engineer Intern <span>New Jersey</span></p>
+        <p class="role">Software Engineer Intern</p>
+        <p class="place">New Jersey</p>
         <div class="cards">
           <div class="card">
             <h4>Temperature pipeline</h4>
