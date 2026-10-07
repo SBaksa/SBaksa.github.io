@@ -78,8 +78,10 @@ h1 { font-family: var(--display); font-weight: 800; font-size: clamp(5.5rem, 21v
 .lead { font-size: 1.4375rem; line-height: 1.35; max-width: 36rem; }
 .sub { color: var(--muted); max-width: 36rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.5rem; margin-top: 0.5rem; }
+.actions .btn + .btn { margin-left: -0.75rem; }
 .btn { display: inline-block; background: var(--amber); color: var(--bg); font-weight: 800; padding: 0.65rem 1.2rem; border-radius: 8px; text-decoration: none; }
-.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.mint { background: var(--mint); }
+.btn:hover, .btn.mint:hover { background: var(--ink); color: var(--bg); }
 .actions .plain { font-weight: 600; }
 
 /* A section is a line: the heading is its name plate, the entries are its stops. */
@@ -233,6 +235,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
       <p class="sub">Python, Go, JavaScript and TypeScript. Rutgers mathematics graduate, 2021.</p>
       <p class="actions">
         <a class="btn" href="#experience">See experience</a>
+        <a class="btn mint" href="#projects">See projects</a>
         <a class="plain" href="mailto:steven.baksa1@gmail.com">steven.baksa1@gmail.com</a>
         <a class="plain" href="https://github.com/SBaksa">GitHub</a>
         <a class="plain" href="https://www.linkedin.com/in/steven-b-54b09a176/">LinkedIn</a>
